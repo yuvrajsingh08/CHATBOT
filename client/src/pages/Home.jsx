@@ -40,7 +40,11 @@ export default function Home({
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/chat", {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      if (!apiUrl) {
+        throw new Error("API URL is not configured. Please set VITE_API_URL in your .env file");
+      }
+      const response = await fetch(`${apiUrl}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage }),
@@ -83,25 +87,6 @@ export default function Home({
         /* ── Landing Screen ── */
         <div className="flex-1 flex items-center justify-center px-6 py-16">
           <div className="w-full max-w-2xl">
-
-            {/* Logo mark */}
-            {/* <div className="flex justify-center mb-10">
-              <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2.2}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8h2a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2h2M12 3v10m0 0l-3-3m3 3l3-3"
-                  />
-                </svg>
-              </div>
-            </div> */}
 
             {/* Headline */}
             <div className="text-center mb-12">

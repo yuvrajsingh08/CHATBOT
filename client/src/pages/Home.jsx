@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ChatBox from "../components/ChatBox";
 import InputBox from "../components/InputBox";
-
 const SUGGESTED_PROMPTS = [
   "Explain closures in JavaScript",
   "What is the event loop?",
